@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>COVID-19 statistics</title>
+</head>
+<body>
+    <h1>Information on the coronavirus in real time</h1>
+    <div class="container">
+        <!-- Summary section -->
+        <section>
+            <!--Start of card  -->
+            <div class="card">
+                <h5 class="text-center">Global Summary</h5>
+                <h3>Choose the data to consult: </h3>
+                    <!-- Global Summary Start -->
+                    <div class="sumario">
+                        <button onclick="traersumario()">Get Global Data</button>
+                        <div id="sumario"><!-- Insert data using id -->
+                    </div>
+                    <!-- End of global summary -->
+                    <!-- Spain communities -->
+                    <div class="datoscomunidadesespanolas">
+                        <button class="btn btn-danger w-100" onclick="traerultimahora()">Recent data from Spanish communities</button>
+                        <div>
+                            <table class="table">
+
+                                <tbody id="ultimahora"><!-- Insert data using id -->
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End of spain communities -->
+                    <!-- Spain data start -->
+                    <div class="obtenerdatosdeespana">
+                        <button onclick="traerespana()">Get Data from Spain</button>
+                        <div id="espana"><!-- Insert data using id -->
+                    </div>
+                    <!-- Spain data end -->
+                    <!-- World data -->
+                    <div class="obtenerdatosmundiales">
+                        <button onclick="traermundiales()">Get world data by countries</button>
+                        <div>
+                            <table class="table">
+
+                                <tbody id="mundiales"><!-- Insert data using id -->
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End of world data -->
+            </div>
+            <!-- End of card -->
+        </section>
+        <!-- End of summary -->
+
+    </div>
+    
+    <script>
+
+        /* Summary data function:
+            - With var we create a "contenido" variable with which through the id we will show the code through the activation of the traersumario() function which is triggered by the button
+              that is inside the div with the class "sumario".
+            - In the traersumario() function we fetch the data from https://api.covid19api.com/summary
+            - With the first then we convert it to json
+            - And with it then data, we print the data through the console.log to view them in the browser console (Right button -> Inspect -> Console)
+            - And finally in the created variable content with the corresponding id, we make an innerHTML in which we write our html code and the data to include from the
+              fetch using $ { data.father.child ....}, where we want to present this information
+        */
+
+        var contenido = document.querySelector('#sumario')
+        function traersumario() {
+            fetch('https://api.covid19api.com/summary')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                contenido.innerHTML = `
+                <p><strong>Current database date: </strong>  <br> ${data.Global.Date}</p>
+                <p><strong>New commits: </strong> ${data.Global.NewConfirmed}</p>
+                <p><strong>New deaths: </strong> ${data.Global.NewDeaths}</p>
+                <p><strong>New recovered: </strong> ${data.Global.NewRecovered}</p>
+                <p><strong>New deaths: </strong> ${data.Global.NewDeaths}</p>
+                <p><strong>Total retrieved: </strong> ${data.Global.TotalRecovered}</p>
+                <small>Real-time data, worldwide </small>
+                `
+            })
+        }
+
+        /* Spain data function:
+            - With var we create a "contenido" variable with which, through the id, we will show the code through the activation of the function traerespana() which is triggered by the button
+              that is inside the div with the class "espana".
+            - In the fetch traerespana() function we fetch the data from https://api.covid19api.com/summary
+            - With the first then we convert it to json
+            - And with it then data, we print the data through the console.log to view them in the browser console (Right button -> Inspect -> Console)
+            - And finally in the created variable contenido with the corresponding id, we make an innerHTML in which we write our html code and the data to include from the
+              fetch using $ { data.father.child ....}, where we want to present this information.
+            - In this case it is necessary to emphasize that we work with an array Countries [], so to show the data of the country we want to include the data we will have to take into account 
+              the number that occupies in the array which according to its structure is the next $ {data.Countries ['number of countries to show']. data to show from country}
+              (In this case 161 is the number corresponding to Spain)
+        */
+
+
+
+        var contenido = document.querySelector('#espana')
+            function traerespana() {
+            fetch('https://api.covid19api.com/summary')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.Countries)
+                contenido.innerHTML = `
+                <p><strong>Country:</strong> ${data.Countries['162'].Country}</p>
+                <p><strong>New infections:</strong> ${data.Countries['162'].NewConfirmed}</p>
+                <p><strong>New deaths:</strong> ${data.Countries['162'].NewDeaths}</p>
+                <p><strong> New recovered:</strong> ${data.Countries['162'].NewRecovered}</p>
+                <p><strong>Totals:</strong> ${data.Countries['162'].TotalConfirmed}</p>
+                <p><strong>Total deaths::</strong> ${data.Countries['162'].TotalDeaths}</p>
+                <p><strong>Total recovered:</strong> ${data.Countries['162'].TotalRecovered}</p>
+                <small>Real-time data, worldwide</small>
+                `
+            })
+        }
+
+
+        /* World data function:
+            - With var we create a variable "content" with which through the id we will show the code through the activation of the function traermundiales() which is triggered by the button
+              that is inside the div with the class "mundiales".
+            - In the fetch traermundiales() function we fetch the data from https://api.covid19api.com/summary
+            - With the first then we convert it to json
+            - And with it then data, we print the data through the console.log to view them in the browser console (Right button -> Inspect -> Console)
+            - And finally in the created variable content with the corresponding id, we make an innerHTML in which we write our html code and the data to include from the
+              fetch using $ { data.father.child ....}, where we want to present this information
+            - In the second innerHTML we put the table header with the <thead> tag and inside its content so that it appears only when there is an onclick action of the button
+ 
+            - In We pass the table function as input data.Countries so that later in the for (To show all the information from the Countries [] array)
+              we assign it to value and show the information from $ {value.DatoaShow}
+        */
+
+
+        var contenido = document.querySelector('#mundiales')
+
+        function traermundiales() {
+            fetch('https://api.covid19api.com/summary')
+                .then(res => res.json())
+                .then(datos => {
+                    console.log(datos.Countries)
+                    tabla(datos.Countries)
+                })
+        }
+
+        function tabla(datos) {
+            console.log(datos)
+            contenido.innerHTML = ''
+            contenido.innerHTML += `
+            <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Confirmed cases</th>
+                            <th>Total deaths</th>
+                            <th>Total recovered</th>
+                        </tr>
+            </thead>
+                `
+            for(let valor of datos){
+                 console.log(valor.nombre)
+                contenido.innerHTML += `
+                
+                <tr>
+                    <td class="estatica">${ valor.Country }</td>
+                    <td>${ valor.TotalConfirmed }</td>
+                    <td>${ valor.TotalDeaths }</td>
+                    <td>${ valor.TotalRecovered }</td>
+                </tr>
+                `
+            }
+        }
+
+        /* Función datos ultima hora españa:
+            - Con var creamos una variable "contenido" con el que a través de el id mostraremos el código a través de la activación de la función traerultimahora() la cual es desencadenada por el botón
+              que se encuentra dentro del div con la class "ultimahora".
+            - En la funcion traerultimahora() mediante el fetch treamos los datos de https://covid19.secuoyas.io/api/v1/es/ccaa?ultimodia=true
+            - Con el primer then lo convertimos a json
+            - Y con él then data, imprimimos a través del console.log los datos para visualizarlos en la consola del navegador (Botón derecho -> Inspeccionar -> Console)
+            - Y finalmente en la variable creada contenido con el id correspondiente, realizamos un innerHTML en el cual escribimos nuestro código html y los datos a incluir del
+              fetch utilizando ${dato.padre.hijo....}, donde queramos presentar esta información
+            - En el segundo innerHTML ponemos la cabecera de la tabla con la etiqueta <thead> y dentro su contenido para que aparezca solo cuando haya una acción onclick del botón
+ 
+            - En la función tabla le pasamos como input info.timeline['0'].regiones para que luego en el for (Para que muestre toda la información del array regiones[])
+              se lo asignemos a valor y muestre la información desde ${ val.data.DatoaMostrar }
+        */
+
+        /* Last minute data function Spain:
+            - With var we create a variable "contenido" with which through the id we will show the code through the activation of the function fetch traerultimahora() which is triggered by the button
+              that is inside del div with the class "ultimahora".
+            - In the fetch function traerultimahora()() we fetch the data from https://covid19.secuoyas.io/api/v1/es/ccaa?ultimodia=true
+            - With the first then we convert it to json
+            - And with it then data , we print the data through the console.log to view it in the browser console (Right button -> Inspect -> Console)
+            - And finally in the created variable contenido with the corresponding id, we make an innerHTML in which we write our html code and the data to include from the
+              fetch using $ {data.parent.child ....}, where we want to present this information
+            - In the second innerHTML we put the header of the table with the <thead> tag and inside its contenido so that it appears only when there is an onclick action of the button
+ 
+            - In the table function we pass it as input info.timeline['0'].regiones so that later in the for (To show all the information of the array regiones [])
+              we assign it to value and display the information from $ {val.data.DatoaShow}
+        */
+
+
+        function traerultimahora() {
+            fetch('https://covid19.secuoyas.io/api/v1/es/ccaa?ultimodia=true')
+                .then(res => res.json())
+                .then(info => {
+                    console.log(info.timeline['0'].regiones)
+                    tabla2(info.timeline['0'].regiones)
+                })
+        }
+
+        function tabla2(info) {
+            console.log(info)
+            contenido.innerHTML = ''
+            contenido.innerHTML += `
+            <thead>
+                        <tr>
+                            <th>Community </th>
+                            <th>Confirmed Cases</th>
+                            <th>Confirmed Cases Daily</th>
+                            <th>Deceased Cases</th>
+                            <th>Deceased Cases Daily</th>
+                            <th>Hospitalized Cases</th>
+                            <th>Daily Hospitalized Cases</th>
+                            <th>Recovered Cases</th>
+                            <th>Daily Recovered Cases</th>
+                            <th>Uci Cases</th>
+                            <th>Uci Journal Cases</th>
+                        </tr>
+            </thead>
+                `
+            for(let val of info){
+                 console.log(val)
+                contenido.innerHTML += `
+                
+                <tr>
+                    <td class="estatica">${ val.nombreLugar }</td>
+                    <td>${ val.data.casosConfirmados }</td>
+                    <td>${ val.data.casosConfirmadosDiario }</td>
+                    <td>${ val.data.casosFallecidos }</td>
+                    <td>${ val.data.casosFallecidosDiario }</td>
+                    <td>${ val.data.casosHospitalizados }</td>
+                    <td>${ val.data.casosHospitalizadosDiario }</td>
+                    <td>${ val.data.casosRecuperados }</td>
+                    <td>${ val.data.casosRecuperadosDiario }</td>
+                    <td>${ val.data.casosUci }</td>
+                    <td>${ val.data.casosUciDiario }</td>
+                </tr>
+                `
+            }
+        }
+    </script>
+    <small class="">CODE MADE BY: <a href="https://github.com/RodrigoSendinoSanz" target="_blank" rel="GitHub">Rodrigo Sendino Sanz </a> </small>
+</body>
+<!-- CODE MADE BY:
+8 888888888o.      ,o888888o.     8 888888888o.      8 888888888o.    8 8888     ,o888888o.        ,o888888o.     
+8 8888    `88.  . 8888     `88.   8 8888    `^888.   8 8888    `88.   8 8888    8888     `88.   . 8888     `88.   
+8 8888     `88 ,8 8888       `8b  8 8888        `88. 8 8888     `88   8 8888 ,8 8888       `8. ,8 8888       `8b  
+8 8888     ,88 88 8888        `8b 8 8888         `88 8 8888     ,88   8 8888 88 8888           88 8888        `8b 
+8 8888.   ,88' 88 8888         88 8 8888          88 8 8888.   ,88'   8 8888 88 8888           88 8888         88 
+8 888888888P'  88 8888         88 8 8888          88 8 888888888P'    8 8888 88 8888           88 8888         88 
+8 8888`8b      88 8888        ,8P 8 8888         ,88 8 8888`8b        8 8888 88 8888   8888888 88 8888        ,8P 
+8 8888 `8b.    `8 8888       ,8P  8 8888        ,88' 8 8888 `8b.      8 8888 `8 8888       .8' `8 8888       ,8P  
+8 8888   `8b.   ` 8888     ,88'   8 8888    ,o88P'   8 8888   `8b.    8 8888    8888     ,88'   ` 8888     ,88'   
+8 8888     `88.    `8888888P'     8 888888888P'      8 8888     `88.  8 8888     `8888888P'        `8888888P'     
+                                                                                                                  
+   d888888o.   8 8888888888   b.             8 8 888888888o.       8 8888 b.             8     ,o888888o.         
+ .`8888:' `88. 8 8888         888o.          8 8 8888    `^888.    8 8888 888o.          8  . 8888     `88.       
+ 8.`8888.   Y8 8 8888         Y88888o.       8 8 8888        `88.  8 8888 Y88888o.       8 ,8 8888       `8b      
+ `8.`8888.     8 8888         .`Y888888o.    8 8 8888         `88  8 8888 .`Y888888o.    8 88 8888        `8b     
+  `8.`8888.    8 888888888888 8o. `Y888888o. 8 8 8888          88  8 8888 8o. `Y888888o. 8 88 8888         88     
+   `8.`8888.   8 8888         8`Y8o. `Y88888o8 8 8888          88  8 8888 8`Y8o. `Y88888o8 88 8888         88     
+    `8.`8888.  8 8888         8   `Y8o. `Y8888 8 8888         ,88  8 8888 8   `Y8o. `Y8888 88 8888        ,8P     
+8b   `8.`8888. 8 8888         8      `Y8o. `Y8 8 8888        ,88'  8 8888 8      `Y8o. `Y8 `8 8888       ,8P      
+`8b.  ;8.`8888 8 8888         8         `Y8o.` 8 8888    ,o88P'    8 8888 8         `Y8o.`  ` 8888     ,88'       
+ `Y8888P ,88P' 8 888888888888 8            `Yo 8 888888888P'       8 8888 8            `Yo     `8888888P'         
+                                                                                                                  
+                       d888888o.           .8.          b.             8  8888888888',8888'                       
+                     .`8888:' `88.        .888.         888o.          8         ,8',8888'                        
+                     8.`8888.   Y8       :88888.        Y88888o.       8        ,8',8888'                         
+                     `8.`8888.          . `88888.       .`Y888888o.    8       ,8',8888'                          
+                      `8.`8888.        .8. `88888.      8o. `Y888888o. 8      ,8',8888'                           
+                       `8.`8888.      .8`8. `88888.     8`Y8o. `Y88888o8     ,8',8888'                            
+                        `8.`8888.    .8' `8. `88888.    8   `Y8o. `Y8888    ,8',8888'                             
+                    8b   `8.`8888.  .8'   `8. `88888.   8      `Y8o. `Y8   ,8',8888'                              
+                    `8b.  ;8.`8888 .888888888. `88888.  8         `Y8o.`  ,8',8888'                               
+                     `Y8888P ,88P'.8'       `8. `88888. 8            `Yo ,8',8888888888888        
+-->
+</html>
+
