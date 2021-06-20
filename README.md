@@ -1,5 +1,5 @@
-# API COVID-19 <img src="../Español/img/iconogithub.png" width="28px" alt="icono">
-<img src="../Español/img/headergithub.png" width="200px" alt="cabecera">
+# API COVID-19 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/iconogithub.png" width="28px" alt="icono">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/headergithub.png" width="200px" alt="cabecera">
 
 Real-time data visualization API on the coronavirus in Spain and in the world/API de visualización de datos en tiempo real sobre el coronavirus en España y en el mundo
 Choose the folder in your language/Elija la carpeta en su idioma
@@ -16,11 +16,11 @@ Choose the folder in your language/Elija la carpeta en su idioma
      	- [Development data](#development-data)
 
 ## Pictures
-<img src="../Español/img/covid1.png" width="200px" alt="covid1">
-<img src="../Español/img/covid2.png" width="200px" alt="covid2">
-<img src="../Español/img/covid3.png" width="200px" alt="covid3">
-<img src="../Español/img/covid4.png" width="200px" alt="covid4">
-<img src="../Español/img/covid5.png" width="200px" alt="covid5">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid1.PNG" width="200px" alt="covid1">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid2.PNG" width="200px" alt="covid2">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid3.PNG" width="200px" alt="covid3">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid4.PNG" width="200px" alt="covid4">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid5.PNG" width="200px" alt="covid5">
 
 ## Español
 ## Descrpición
