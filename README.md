@@ -8,7 +8,7 @@ Choose the folder in your language/Elija la carpeta en su idioma
 - Contenido/Contents
 	- [Pictures](#pictures)
    - [Español](#español)
-     - [Descripción](#descrpición)
+     - [Descripción](#descripción)
      - [Opciones](#Opciones)
      - [Datos de desarrollo](#datos-de-desarrollo)
 	- [English](#english)
@@ -24,7 +24,7 @@ Choose the folder in your language/Elija la carpeta en su idioma
 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid5.PNG" alt="covid5">
 
 ## Español
-## Descrpición
+## Descripción
 Esta API del COIV 19 en España y el mundo, muestra datos a tiempo real y actualizados de los diferentes países del mundo y de las diferentes comunidades de España, para ello recibe información de 2 fuentes (https://api.covid19api.com/summary) y (https://covid19.secuoyas.io/api/v1/es/ccaa?ultimodia=true), y muestra estos datos en tablas y párrafos.
 
 
