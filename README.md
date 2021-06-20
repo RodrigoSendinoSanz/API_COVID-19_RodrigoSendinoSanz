@@ -1,5 +1,5 @@
 # API COVID-19 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/iconogithub.png" width="28px" alt="icono">
-<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/headergithub.png" width="200px" alt="cabecera">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/headergithub.png" alt="cabecera">
 
 Real-time data visualization API on the coronavirus in Spain and in the world/API de visualización de datos en tiempo real sobre el coronavirus en España y en el mundo
 Choose the folder in your language/Elija la carpeta en su idioma
