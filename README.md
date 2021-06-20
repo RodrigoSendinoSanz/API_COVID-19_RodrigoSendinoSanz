@@ -16,7 +16,7 @@ Choose the folder in your language/Elija la carpeta en su idioma
      	- [Development data](#development-data)
 
 ## Pictures
-<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid1.PNG" width="200px" alt="covid1">
+<img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid1.PNG" alt="covid1">
 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid2.PNG" width="200px" alt="covid2">
 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid3.PNG" width="200px" alt="covid3">
 <img src="https://github.com/RodrigoSendinoSanz/API_COVID-19_RodrigoSendinoSanz/blob/main/Espa%C3%B1ol/img/covid4.PNG" width="200px" alt="covid4">
