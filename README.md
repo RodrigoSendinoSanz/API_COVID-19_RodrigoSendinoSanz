@@ -7,7 +7,7 @@ Choose the folder in your language/Elija la carpeta en su idioma
 - Contenido/Contents
 	- [Pictures](#pictures)
    - [Español](#español)
-     - [Descrpición](#descrpición)
+     - [Descripción](#descrpición)
      - [Opciones](#Opciones)
      - [Datos de desarrollo](#datos-de-desarrollo)
 	- [English](#english)
